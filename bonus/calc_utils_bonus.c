@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   calc_utils.c                                       :+:      :+:    :+:   */
+/*   calc_utils_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ujicama <ujicama@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gjohana <gjohana@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 15:55:21 by gjohana           #+#    #+#             */
-/*   Updated: 2022/08/26 13:54:17 by ujicama          ###   ########.fr       */
+/*   Updated: 2022/08/26 16:14:16 by gjohana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ void	choose_direction(t_info *info)
 		}
 		if (info->map[info->calc.mapx][info->calc.mapy] == '1')
 			info->calc.hit = 1;
+		else if (info->map[info->calc.mapx][info->calc.mapy] == '2')
+			info->calc.hit = 2;
 	}
 	if (info->calc.side == 0)
 		info->calc.perpwalldist = (info->calc.mapx

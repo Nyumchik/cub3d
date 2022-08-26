@@ -1,0 +1,13 @@
+NO ./textures/bluestone.xpm
+SO ./textures/colorstone.xpm
+WE ./textures/greystone.xpm
+EA ./textures/purplestone.xpm
+
+
+F 80,80,80
+C 0,150,180
+
+
+11111111
+10000001
+11111111

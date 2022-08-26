@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ujicama <ujicama@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gjohana <gjohana@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 10:12:54 by gjohana           #+#    #+#             */
-/*   Updated: 2022/08/26 13:51:23 by ujicama          ###   ########.fr       */
+/*   Updated: 2022/08/26 20:25:12 by gjohana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,10 +88,12 @@ int	main(int ac, char **av)
 	info.img.img = mlx_new_image(info.mlx, WINWIDTH, WINHEIGHT);
 	info.img.data = (int *)mlx_get_data_addr(info.img.img,
 			&info.img.bpp, &info.img.size_l, &info.img.endian);
+	info.door = load_img("./textures/door.xpm", info.mlx);
 	mlx_loop_hook(info.mlx, &main_loop, &info);
 	mlx_hook(info.win, X_EVENT_KEY_PRESS, 1L << 0, &key_press, &info);
 	mlx_hook(info.win, X_EVENT_KEY_RELEASE, 1L << 1, &key_release, &info);
 	mlx_hook(info.win, X_EVENT_KEY_EXIT, 1L << 0, handle_event, NULL);
+	mlx_hook(info.win, X_EVENT_MOUSE, 1L << 0, mouse, &info);
 	mlx_loop(info.mlx);
 	return (0);
 }

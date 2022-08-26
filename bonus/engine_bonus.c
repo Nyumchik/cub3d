@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   engine.c                                           :+:      :+:    :+:   */
+/*   engine_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ujicama <ujicama@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gjohana <gjohana@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 13:42:06 by ujicama           #+#    #+#             */
-/*   Updated: 2022/08/26 13:54:52 by ujicama          ###   ########.fr       */
+/*   Updated: 2022/08/26 16:27:58 by gjohana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,9 @@ void	calc(t_info *info)
 			info->calc.texpos += info->calc.step;
 			info->calc.color = info->texture[info->calc.texnum][TEXHEIGHT
 				* info->calc.texy + info->calc.texx];
+			if (info->calc.hit == 2)
+				info->calc.color = info->door.data[TEXHEIGHT
+					* info->calc.texy + info->calc.texx];
 			info->buf[y][x] = info->calc.color;
 			y++;
 		}

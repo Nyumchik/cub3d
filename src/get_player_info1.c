@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_player_info.c                                  :+:      :+:    :+:   */
+/*   get_player_info1.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gjohana <gjohana@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: ujicama <ujicama@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 15:16:48 by ujicama           #+#    #+#             */
-/*   Updated: 2022/08/25 19:01:19 by gjohana          ###   ########.fr       */
+/*   Updated: 2022/08/26 13:56:48 by ujicama          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ void	set_player_dir_east(t_info *info)
 	double	old_dir_x;
 	double	old_plane_x;
 
-	old_dir_x = info->dirX;
-	info->dirX = info->dirX * cos(-M_PI / 2) - info->dirY * sin(-M_PI / 2);
-	info->dirY = old_dir_x * sin(-M_PI / 2) + info->dirY * cos(-M_PI / 2);
-	old_plane_x = info->planeX;
-	info->planeX = info->planeX * cos(-M_PI / 2)
-		- info->planeY * sin(-M_PI / 2);
-	info->planeY = old_plane_x * sin(-M_PI / 2) + info->planeY * cos(-M_PI / 2);
+	old_dir_x = info->dirx;
+	info->dirx = info->dirx * cos(-M_PI / 2) - info->diry * sin(-M_PI / 2);
+	info->diry = old_dir_x * sin(-M_PI / 2) + info->diry * cos(-M_PI / 2);
+	old_plane_x = info->planex;
+	info->planex = info->planex * cos(-M_PI / 2)
+		- info->planey * sin(-M_PI / 2);
+	info->planey = old_plane_x * sin(-M_PI / 2) + info->planey * cos(-M_PI / 2);
 }
 
 void	set_player_dir(t_info *info, int dir)
@@ -40,8 +40,8 @@ void	set_player_dir(t_info *info, int dir)
 
 void	set_player_pos(t_info *info, int y, int x)
 {
-	info->posX = y + 0.5;
-	info->posY = x + 0.5;
+	info->posx = y + 0.5;
+	info->posy = x + 0.5;
 }
 
 void	set_player_dir_pos(t_info *info, int dir, int y, int x)

@@ -6,7 +6,7 @@
 /*   By: gjohana <gjohana@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 16:10:36 by gjohana           #+#    #+#             */
-/*   Updated: 2022/08/26 14:54:48 by gjohana          ###   ########.fr       */
+/*   Updated: 2022/08/26 14:54:58 by gjohana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,5 +108,5 @@ void	ft_read_map(const int fd, t_info *info, char *line)
 	while (info->map[i])
 		i++;
 	check_duplicate_player(info, info->map);
-	check_map_content(info->map, "01SEWN \n");
+	check_map_content(info->map, "012SEWN \n");
 }
