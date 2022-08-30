@@ -6,7 +6,7 @@
 /*   By: gjohana <gjohana@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 13:42:06 by ujicama           #+#    #+#             */
-/*   Updated: 2022/08/26 16:27:58 by gjohana          ###   ########.fr       */
+/*   Updated: 2022/08/30 18:20:45 by gjohana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	draw(t_info *info)
 	mlx_put_image_to_window(info->mlx, info->win, info->img.img, 0, 0);
 }
 
-void	calc(t_info *info)
+void	rays(t_info *info)
 {
 	int		x;
 	int		y;
@@ -48,17 +48,17 @@ void	calc(t_info *info)
 		init_vars(info, x);
 		choose_direction(info);
 		draw_walls(info);
-		y = info->calc.drawstart;
-		while (y < info->calc.drawend)
+		y = info->rays.drawstart;
+		while (y < info->rays.drawend)
 		{
-			info->calc.texy = (int)info->calc.texpos & (TEXHEIGHT - 1);
-			info->calc.texpos += info->calc.step;
-			info->calc.color = info->texture[info->calc.texnum][TEXHEIGHT
-				* info->calc.texy + info->calc.texx];
-			if (info->calc.hit == 2)
-				info->calc.color = info->door.data[TEXHEIGHT
-					* info->calc.texy + info->calc.texx];
-			info->buf[y][x] = info->calc.color;
+			info->rays.texy = (int)info->rays.texpos & (TEXHEIGHT - 1);
+			info->rays.texpos += info->rays.step;
+			info->rays.color = info->texture[info->rays.texnum][TEXHEIGHT
+				* info->rays.texy + info->rays.texx];
+			if (info->rays.hit == 2)
+				info->rays.color = info->door.data[TEXHEIGHT
+					* info->rays.texy + info->rays.texx];
+			info->buf[y][x] = info->rays.color;
 			y++;
 		}
 	}

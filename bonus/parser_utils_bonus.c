@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser_utils.c                                     :+:      :+:    :+:   */
+/*   parser_utils_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ujicama <ujicama@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gjohana <gjohana@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 18:37:46 by gjohana           #+#    #+#             */
-/*   Updated: 2022/08/26 12:43:46 by ujicama          ###   ########.fr       */
+/*   Updated: 2022/08/30 18:06:59 by gjohana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,24 @@ int	skip_spaces(char *str, int i)
 	while (str[i] == ' ')
 		i++;
 	return (i);
+}
+
+void	get_map_w_h(t_info *info)
+{
+	int	i;
+	int	len;
+
+	i = 0;
+	info->mapw = ft_strlen(info->map[0]);
+	while (info->map[i])
+		i++;
+	info->maph = i;
+	i = 0;
+	while (info->map[i])
+	{
+		len = ft_strlen(info->map[i]);
+		if (len > info->mapw)
+			info->mapw = len;
+		i++;
+	}
 }

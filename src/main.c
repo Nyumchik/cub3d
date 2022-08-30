@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ujicama <ujicama@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gjohana <gjohana@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 10:12:54 by gjohana           #+#    #+#             */
-/*   Updated: 2022/08/26 13:51:23 by ujicama          ###   ########.fr       */
+/*   Updated: 2022/08/30 17:59:47 by gjohana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	init_info(t_info *info)
 
 int	main_loop(t_info *info)
 {
-	calc(info);
+	rays(info);
 	draw(info);
 	key_update(info);
 	return (0);

@@ -1,61 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key_update_utils_bonus.c                           :+:      :+:    :+:   */
+/*   rotation_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gjohana <gjohana@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 17:25:28 by gjohana           #+#    #+#             */
-/*   Updated: 2022/08/26 18:23:55 by gjohana          ###   ########.fr       */
+/*   Updated: 2022/08/30 17:35:05 by gjohana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
-
-void	movements2(t_info *info)
-{
-	if (info->key_d)
-	{
-		if (info->map[(int)(info->posx)][(int)(info->posy
-					- info->dirx * info->movespeed)] != '1')
-			info->posy -= info->dirx * info->movespeed;
-		if (info->map[(int)(info->posx + info->diry
-				* info->movespeed)][(int)(info->posy)] != '1')
-			info->posx += info->diry * info->movespeed;
-	}
-	if (info->key_a)
-	{
-		if (info->map[(int)(info->posx)][(int)(info->posy
-					+ info->dirx * info->movespeed)] != '1')
-			info->posy += info->dirx * info->movespeed;
-		if (info->map[(int)(info->posx - info->diry
-				* info->movespeed)][(int)(info->posy)] != '1')
-			info->posx -= info->diry * info->movespeed;
-	}
-}
-
-void	movements(t_info *info)
-{
-	if (info->key_w)
-	{
-		if (info->map[(int)(info->posx + info->dirx
-				* info->movespeed)][(int)(info->posy)] != '1')
-			info->posx += info->dirx * info->movespeed;
-		if (info->map[(int)(info->posx)][(int)(info->posy
-				+ info->diry * info->movespeed)] != '1')
-			info->posy += info->diry * info->movespeed;
-	}
-	if (info->key_s)
-	{
-		if (info->map[(int)(info->posx - info->dirx
-				* info->movespeed)][(int)(info->posy)] != '1')
-			info->posx -= info->dirx * info->movespeed;
-		if (info->map[(int)(info->posx)][(int)(info->posy
-				- info->diry * info->movespeed)] != '1')
-			info->posy -= info->diry * info->movespeed;
-	}
-	movements2(info);
-}
 
 void	rotation2(t_info *info)
 {

@@ -6,7 +6,7 @@
 /*   By: gjohana <gjohana@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 10:12:54 by gjohana           #+#    #+#             */
-/*   Updated: 2022/08/26 20:25:12 by gjohana          ###   ########.fr       */
+/*   Updated: 2022/08/30 18:04:30 by gjohana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,10 @@ void	init_info(t_info *info)
 
 int	main_loop(t_info *info)
 {
-	calc(info);
+	rays(info);
 	draw(info);
 	key_update(info);
+	minimap(info);
 	return (0);
 }
 

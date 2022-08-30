@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_map.c                                         :+:      :+:    :+:   */
+/*   read_map_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gjohana <gjohana@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 16:10:36 by gjohana           #+#    #+#             */
-/*   Updated: 2022/08/26 14:54:58 by gjohana          ###   ########.fr       */
+/*   Updated: 2022/08/30 18:14:01 by gjohana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,9 +90,7 @@ void	check_duplicate_player(t_info *info, char **temp)
 void	ft_read_map(const int fd, t_info *info, char *line)
 {
 	char	*map;
-	int		i;
 
-	i = 0;
 	map = ft_strdup(line);
 	while (1)
 	{
@@ -104,9 +102,9 @@ void	ft_read_map(const int fd, t_info *info, char *line)
 	}
 	close(fd);
 	info->map = ft_split(map, '\n');
+	info->old_map = ft_split(map, '\n');
 	free(map);
-	while (info->map[i])
-		i++;
+	get_map_w_h(info);
 	check_duplicate_player(info, info->map);
 	check_map_content(info->map, "012SEWN \n");
 }

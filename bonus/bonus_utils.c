@@ -6,7 +6,7 @@
 /*   By: gjohana <gjohana@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:56:32 by gjohana           #+#    #+#             */
-/*   Updated: 2022/08/26 20:24:45 by gjohana          ###   ########.fr       */
+/*   Updated: 2022/08/30 18:00:15 by gjohana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,47 @@ int	check_door(char **map, int i, int j)
 	else if (map[i - 1][j] == '1' && map[i + 1][j] == '1')
 		return (0);
 	return (-1);
+}
+
+void	close_door(t_info *info)
+{
+	int	i;
+	int	j;
+	int	x;
+	int	y;
+
+	i = 0;
+	y = (int)(info->posy / 64);
+	x = (int)(info->posx / 64);
+	while (info->old_map[i])
+	{
+		j = 0;
+		while (info->old_map[i][j])
+		{
+			if (info->old_map[i][j] == '2')
+			{
+				if (((j != x) && (j + 1 != x && j - 1 != x)))
+					info->map[i][j] = info->old_map[i][j];
+				if (((i != y) && (i + 1 != y && i - 1 != y)))
+					info->map[i][j] = info->old_map[i][j];
+				info->rays.hit = 2;
+			}
+			j++;
+		}
+		i++;
+	}
+}
+
+void	open_door(t_info *info)
+{
+	if (info->map[(int)(info->posx + info->dirx
+			* info->movespeed)][(int)(info->posy)] == '2')
+		info->map[(int)(info->posx + info->dirx
+				* info->movespeed)][(int)(info->posy)] = '0';
+	if (info->map[(int)(info->posx)][(int)(info->posy
+				+ info->diry * info->movespeed)] == '2')
+		info->map[(int)(info->posx)][(int)(info->posy
+				+ info->diry * info->movespeed)] = '0';
 }
 
 t_img	load_img(char *path, void *mlx)
@@ -35,49 +76,4 @@ t_img	load_img(char *path, void *mlx)
 	if (!tmp.data)
 		exit(printf("mlx Error : mlx_get_data_addr!\n"));
 	return (tmp);
-}
-
-int	mouse(int x, int y, t_info *info)
-{
-
-	(void)y;
-
-	double	diff;
-	double		ptr;
-
-	(void)y;
-	diff = x - (WINWIDTH / 2);
-	ptr = mlx_mouse_get_pos(info->win, &x, &y);
-	if (diff < 0)
-	{
-		info->key_arrow_l = 1;
-		info->key_arrow_r = 0;
-		if (ptr > mlx_mouse_get_pos(info->win, &x, &y) || diff == 0)
-		{
-			info->key_arrow_l = 0;
-			info->key_arrow_r = 0;
-		}
-	}
-	if (diff > 0)
-	{
-		info->key_arrow_l = 0;
-		info->key_arrow_r = 1;
-		if (ptr < mlx_mouse_get_pos(info->win, &x, &y) || diff == 0)
-		{
-			info->key_arrow_l = 0;
-			info->key_arrow_r = 0;
-		}
-	}
-	if (diff == 0)
-	{
-		info->key_arrow_l = 0;
-		info->key_arrow_r = 0;
-	}
-	# if defined(__linux__)
-		mlx_mouse_move(info->mlx, info->win, WINWIDTH / 2, WINHEIGHT / 2);
-	# elif defined(__APPLE__) && defined(__MACH__)
-		mlx_mouse_move(info->win, WINWIDTH / 2, WINHEIGHT / 2);
-	# endif
-	return (0);
-	
 }

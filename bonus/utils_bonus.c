@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   utils_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ujicama <ujicama@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gjohana <gjohana@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 10:23:18 by gjohana           #+#    #+#             */
-/*   Updated: 2022/08/26 13:58:55 by ujicama          ###   ########.fr       */
+/*   Updated: 2022/08/30 17:34:01 by gjohana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ int	key_press(int key, t_info *info)
 		info->key_arrow_l = 1;
 	else if (key == K_AR_R)
 		info->key_arrow_r = 1;
+	else if (key == K_SP)
+		open_door(info);
 	return (0);
 }
 
@@ -64,6 +66,8 @@ int	key_release(int key, t_info *info)
 		info->key_arrow_l = 0;
 	else if (key == K_AR_R)
 		info->key_arrow_r = 0;
+	else if (key == K_SP)
+		close_door(info);
 	return (0);
 }
 
