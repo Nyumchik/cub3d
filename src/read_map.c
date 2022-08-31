@@ -6,7 +6,7 @@
 /*   By: gjohana <gjohana@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 16:10:36 by gjohana           #+#    #+#             */
-/*   Updated: 2022/08/30 18:14:51 by gjohana          ###   ########.fr       */
+/*   Updated: 2022/08/31 15:01:29 by gjohana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,11 @@ void	ft_read_map(const int fd, t_info *info, char *line)
 		line = get_next_line(fd);
 		if (!line)
 			break ;
+		if (line[0] && line[0] == '\n')
+		{
+			free(line);
+			exit_error_msg("bad map\n");
+		}
 		map = ft_strjoin_gnl(map, line);
 		free(line);
 	}

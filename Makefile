@@ -6,11 +6,13 @@
 #    By: gjohana <gjohana@student.21-school.ru>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/25 14:55:36 by gjohana           #+#    #+#              #
-#    Updated: 2022/08/30 18:20:16 by gjohana          ###   ########.fr        #
+#    Updated: 2022/08/31 15:32:51 by gjohana          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3d
+
+NAME_B = cub3d_bonus
 
 SRCS =  src/main.c src/raycast.c src/parser.c src/read_map.c src/get_player_info1.c src/get_player_info2.c src/utils.c src/raycast_utils.c\
 		src/key_update_utils.c src/check_map.c src/parser_utils.c src/get_rgb.c src/check_rgb.c
@@ -45,12 +47,16 @@ MLX 	= -framework OpenGL -framework AppKit -lmlx -L /Users/annapopova/X11
 
 all:		$(NAME)
 
+bonus:		$(NAME_B)
 
 $(NAME):	$(LIB) $(OBJ) $(HEADER)
 			$(CC) $(FLAGS) $(OBJ) $(LIB) $(MLX) -o $(NAME)
 
-bonus:	
-	@make OBJ="$(OBJ_B)" all
+$(NAME_B):	$(LIB) $(OBJ_B) $(HEADER)
+			$(CC) $(FLAGS) $(OBJ_B) $(LIB) $(MLX) -o $(NAME_B)
+
+#bonus:	
+#	@make OBJ="$(OBJ_B)" all
 
 $(LIB):
 			@$(MAKE) -C libft/

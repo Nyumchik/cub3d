@@ -6,7 +6,7 @@
 /*   By: gjohana <gjohana@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 17:48:12 by gjohana           #+#    #+#             */
-/*   Updated: 2022/08/30 18:00:18 by gjohana          ###   ########.fr       */
+/*   Updated: 2022/08/31 15:21:31 by gjohana          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,6 @@ int	mouse(int x, int y, t_info *info)
 			info->key_arrow_r = 0;
 	}
 	check_diff(info, diff);
-	#if defined(__linux__)
-		mlx_mouse_move(info->mlx, info->win, WINWIDTH / 2, WINHEIGHT / 2);
-	#elif defined(__APPLE__) && defined(__MACH__)
-		mlx_mouse_move(info->win, WINWIDTH / 2, WINHEIGHT / 2);
-	#endif
+	mlx_mouse_move(info->win, WINWIDTH / 2, WINHEIGHT / 2);
 	return (0);
 }
